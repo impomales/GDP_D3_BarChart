@@ -22,11 +22,35 @@ $(document).ready(function() {
     .orient("left")
     .ticks(10, ",f");
   
+  var format = d3.format(',.2f');
+ 
+  var tip = d3.tip()
+    .attr('class', 'tip')
+    .html(function(d) {
+      var date = new Date(d[0]);
+      var month = new Array();
+          month[0] = "January";
+          month[1] = "February";
+          month[2] = "March";
+          month[3] = "April";
+          month[4] = "May";
+          month[5] = "June";
+          month[6] = "July";
+          month[7] = "August";
+          month[8] = "September";
+          month[9] = "October";
+          month[10] = "November";
+          month[11] = "December";
+      return "<strong> $" + format(d[1]) + " Billion </strong><div>" + date.getFullYear() + " - " + month[date.getMonth()] + "</div>"
+    });
+  
   var chart = d3.select("#chart")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
    .append("g")
     .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
+  
+  chart.call(tip);
 
   $.getJSON(url, function(data) {
     
@@ -57,6 +81,8 @@ $(document).ready(function() {
         .attr("x", function(d) {return x(new Date(d[0]));})
         .attr("y", function(d) {return y(d[1]);})
         .attr("height", function(d) {return height - y(d[1]);})
-        .attr("width", width/data.data.length);
+        .attr("width", width/data.data.length)
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
   });
 });

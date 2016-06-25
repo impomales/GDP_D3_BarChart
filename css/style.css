@@ -19,6 +19,20 @@ body {
   fill: steelblue;
   stroke: steelblue;
 }
+#chart .bar:hover {
+  fill: lightsteelblue;
+  stroke: lightsteelblue;
+}
+
+.tip {
+  background-color: lightsteelblue;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px black;
+  padding: 10px;
+}
+.tip div {
+  text-align: left;
+}
 
 .axis text {
   font: 12px sans-serif;
