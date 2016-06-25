@@ -1,0 +1,29 @@
+body {
+  background-color: #eee;
+  text-align: center;
+}
+
+#title {
+  padding: 10px;
+  color: steelblue;
+}
+
+#container {
+  box-shadow: 0px 0px 5px black;
+  background-color: white;
+  width: 85%;
+  margin: auto;
+}
+#container div {
+  background-color: steelblue;
+}
+
+#footnote {
+  font-size: 15px;
+  color: steelblue;
+  padding: 10px;
+}
+#footnote a {
+  text-decoration: none;
+  color: steelblue;
+}
